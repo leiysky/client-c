@@ -120,6 +120,7 @@ public:
 private:
     void thread()
     {
+	log->information("coprocess thread start.");
         while (true)
         {
             if (cancelled)
