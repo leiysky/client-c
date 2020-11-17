@@ -7,6 +7,10 @@ if (USE_INTERNAL_GTEST_LIBRARY AND ENABLE_TESTS)
     add_subdirectory (googletest)
 endif()
 
+if (USE_INTERNAL_POCO_LIBRARY)
+    add_subdirectory (poco)
+endif()
+
 set(fiu_include_dirs libfiu/libfiu)
 list(APPEND fiu_sources libfiu/libfiu/fiu.c)
 list(APPEND fiu_sources libfiu/libfiu/fiu-rc.c)
