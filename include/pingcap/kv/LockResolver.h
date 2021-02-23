@@ -33,10 +33,14 @@ struct TxnStatus
         }
         if (ttl == 0)
         {
-            if (action == kvrpcpb::Action::NoAction || action == kvrpcpb::Action::LockNotExistRollback
-                || action == kvrpcpb::Action::TTLExpireRollback)
+            switch (action)
             {
-                return true;
+                case kvrpcpb::Action::NoAction:
+                case kvrpcpb::Action::LockNotExistRollback:
+                case kvrpcpb::Action::TTLExpireRollback:
+                    return true;
+                default:
+                    return false;
             }
         }
         return false;
